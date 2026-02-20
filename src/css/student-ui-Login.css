@@ -1,0 +1,29 @@
+/* Student Theme Colors */
+body {
+    background-color: #f0f9ff; /* Very light blue */
+}
+
+h2 {
+    color: #0369a1;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.btn-primary {
+    background-color: #0284c7;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0369a1;
+}
+
+.auth-footer a {
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: bold;
+}
