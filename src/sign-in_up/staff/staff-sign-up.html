@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="staff-sign-up.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-card">
+            <a href="../../homepage/index.html" class="back-home"><i class="fas fa-home"></i> Home</a>
+            
+            <div class="logo">
+                <img src="school1.jpeg" alt="School Logo">
+            </div>
+            
+            <h1>Staff Registration</h1>
+            <p>Create your account to join our team</p>
+
+            <form action="../../RegisterServlet" method="POST">
+                <div class="input-group">
+                    <i class="fas fa-user-tie"></i>
+                    <select name="role" required>
+                        <option value="">Select Your Role</option>
+                        <option value="headmaster">Headmaster</option>
+                        <option value="dos">Director of Studies (DOS)</option>
+                        <option value="accountant">Accountant</option>
+                        <option value="teacher">Teacher</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="full_name" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <i class="fas fa-eye toggle-icon" id="eye1" onclick="togglePassword('password', 'eye1')"></i>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                    <i class="fas fa-eye toggle-icon" id="eye2" onclick="togglePassword('confirm_password', 'eye2')"></i>
+                </div>
+
+                <button type="submit" class="btn-signup">Create Account</button>
+
+                <div class="divider">Or</div>
+
+                <div id="g_id_onload"
+                    data-client_id="102192163411-52noi016puq2v5n60adv810es71a18fp.apps.googleusercontent.com"
+                    data-context="signup"
+                    data-callback="handleCredentialResponse">
+                </div>
+
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-text="signup_with"
+                    data-size="large">
+                </div>
+            </form>
+
+            <p class="login-link">Already have an account? <a href="staff-sign-in.html">Login</a></p>
+            
+            <div class="help-footer">
+                Need help? <a href="mailto:support@school.com">Contact Support</a> | <a href="#">FAQ</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId, iconId) {
+            const input = document.getElementById(fieldId);
+            const icon = document.getElementById(iconId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+            }
+        });
+
+        function handleCredentialResponse(response) {
+            const role = document.querySelector('select[name="role"]').value;
+            if (!role) {
+                alert('Please select your role first');
+                return;
+            }
+            
+            fetch('../../RegisterServlet', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'google_token=' + response.credential + '&role=' + role
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '../../staffPortal/dashboard.html';
+                } else {
+                    alert('Registration failed: ' + data.message);
+                }
+            })
+            .catch(err => alert('Error: ' + err));
+        }
+    </script>
+</body>
+</html>

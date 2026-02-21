@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="student-sign-in.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <a href="../../homepage/index.html" class="back-home"><i class="fas fa-home"></i> Home</a>
+            
+            <div class="logo">
+                <img src="school1.jpeg" alt="School Logo">
+            </div>
+            
+            <h1>Student Partal</h1>
+            <p>Welcome back! Sign in to your account</p>
+
+            <form action="../../LoginServlet" method="POST">
+                <input type="hidden" name="role" value="student">
+
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <i class="fas fa-eye toggle-icon" id="eye" onclick="togglePassword()"></i>
+                </div>
+
+                <a href="#" class="forgot-link">Forgot Password?</a>
+
+                <button type="submit" class="btn-login">Login</button>
+
+                <div class="divider">Or</div>
+
+                <div id="g_id_onload"
+                    data-client_id="102192163411-52noi016puq2v5n60adv810es71a18fp.apps.googleusercontent.com"
+                    data-context="signin"
+                    data-callback="handleCredentialResponse">
+                </div>
+
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-text="signin_with"
+                    data-size="large">
+                </div>
+            </form>
+
+            <p class="signup-link">Don't have an account? <a href="student-sign-up.html">Sign Up</a></p>
+            
+            <div class="help-footer">
+                Need help? <a href="mailto:support@school.com">Contact Support</a> | <a href="#">FAQ</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('eye');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        function handleCredentialResponse(response) {
+            fetch('../../LoginServlet', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'google_token=' + response.credential + '&role=student'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '../../studentPortal/dashboard.html';
+                } else {
+                    alert('Login failed: ' + data.message);
+                }
+            })
+            .catch(err => alert('Error: ' + err));
+        }
+    </script>
+</body>
+</html>
