@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="LeaderHome.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-name">
+                <img src="../homepage/school1.jpeg" alt="School Logo" style="border-radius: 50%; height: 100px; width: 100px;" class="logo">
+            </div>
+
+            <div class="hamburger" id="hamburger">☰</div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../homepage/index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Academics</a></li>
+                <li><a href="#">Admissions</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Accomodation</a></li>
+                <li><a href="../studentportal/studentPortal.html">StudentPortal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <h1>Welcome to Staff Portal</h1>
+            <p>Dear Directors of Studies, Teachers, Accountants, Administrators, and all dedicated staff members - this is your professional hub. Access your account to manage your responsibilities, collaborate with colleagues, and continue building excellence in education.</p>
+        </section>
+
+        <div class="portal-container">
+            <div class="portal-cards">
+                <div class="portal-card">
+                    <i class="fas fa-user-plus"></i>
+                    <h2>Create Account</h2>
+                    <p>New staff member? Register to join our team</p>
+                    <a href="../sign-in_up/staff/staff-sign-up.html" class="btn-portal">Sign Up</a>
+                </div>
+
+                <div class="portal-card">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <h2>Login</h2>
+                    <p>Existing staff? Access your dashboard</p>
+                    <a href="../sign-in_up/staff/staff-sign-in.html" class="btn-portal">Login</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2>Send Us a Suggestion</h2>
+                <form action="mailto:your-email@example.com" method="POST">
+                    <textarea name="message" placeholder="Type your suggestion or compliment..." required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <ul>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:your-email@example.com">your-email@example.com</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/1234567890" target="_blank">+1 234 567 890</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-x-twitter"></i>
+                        <a href="https://x.com/yourprofile" target="_blank">@yourprofile</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+1234567890">+1 234 567 890</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li>
+                        <i class="fab fa-x-twitter"></i>
+                        <a href="https://x.com/yourprofile" target="_blank">twitter</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:your-email@example.com">Email</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> GS KAYUMBU/TSS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+        });
+    </script>
+</body>
+</html>
