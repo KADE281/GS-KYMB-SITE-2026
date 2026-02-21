@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="studentlogin.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 </head>
 <body>
@@ -118,7 +119,25 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn-primary">Create Account</button>
+                        <button type="submit" class="btn-primary">Create Account</button><br><br>
+                        <h5 style="text-align: center;">Or</h5><br>
+                        
+                        <div id="g_id_onload"
+                            data-client_id="102192163411-52noi016puq2v5n60adv810es71a18fp.apps.googleusercontent.com"
+                            data-context="signup"
+                            data-ux_mode="popup"
+                            data-callback="handleCredentialResponse"
+                            data-auto_prompt="false">
+                        </div>
+
+                        <div class="g_id_signin"
+                            data-type="standard"
+                            data-shape="rectangular"
+                            data-theme="outline"
+                            data-text="signup_with"
+                            data-size="large"
+                            data-logo_alignment="left">
+                        </div>
                     </form>
 
                     <div class="auth-footer">
@@ -129,45 +148,6 @@
             </div>
         </div>
     </main>
-
-
-    <script>
-        // Hamburger toggle
-        const hamburger = document.getElementById("hamburger");
-        const navLinks = document.getElementById("navLinks");
-
-        hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-            hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
-        });
-
-        // Password show/hide
-        function togglePass(fieldId, iconId) {
-            const input = document.getElementById(fieldId);
-            const icon = document.getElementById(iconId);
-
-            if (input.type === "password") {
-                input.type = "text";
-                icon.classList.remove("fa-eye");
-                icon.classList.add("fa-eye-slash");
-            } else {
-                input.type = "password";
-                icon.classList.remove("fa-eye-slash");
-                icon.classList.add("fa-eye");
-            }
-        }
-        // Password match validation
-        document.querySelector('.auth-form').addEventListener('submit', function(e) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-
-            if (password !== confirmPassword) {
-                e.preventDefault();
-                alert('Passwords do not match! Please try again.');
-                document.getElementById('confirm_password').focus();
-            }
-        });
-    </script>
 
     <footer style="text-align:center; padding:15px; background:#1e3a8a; color:white;">
         <section class="contact-support">
@@ -234,6 +214,64 @@
 </div>
  
 </footer>
-    
+
+<script>
+        // Hamburger toggle
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+        });
+
+        // Password show/hide
+        function togglePass(fieldId, iconId) {
+            const input = document.getElementById(fieldId);
+            const icon = document.getElementById(iconId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+
+        // Password match validation
+        document.querySelector('.auth-form').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                document.getElementById('confirm_password').focus();
+            }
+        });
+
+        // Google Sign-In callback
+        function handleCredentialResponse(response) {
+            const token = response.credential;
+            
+            // Send token to your backend
+            fetch('../RegisterServlet', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'google_token=' + token + '&role=student'
+            })
+            .then(respo => respo.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Registration failed: ' + data.message);
+                }
+            })
+            .catch(err => alert('Error: ' + err));
+        }
+</script>
+
 </body>
 </html>
