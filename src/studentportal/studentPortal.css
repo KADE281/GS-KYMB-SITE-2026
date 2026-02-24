@@ -28,25 +28,33 @@ body {
 }
 
 .nav-links {
+    margin-top:34px;
     list-style: none;
     display: flex;
     gap: 1px;
 }
 
 .nav-links a {
-    top: 70px;
-    display: block;
-    padding: 6px 6px;
+    display: inline-block;
+    padding: 8px 15px;
     color: white;
     text-decoration: none;
     transition: 0.3s;
-    border-radius: 4px;
     font-weight: bold;
 }
 
 .nav-links a:hover {
-    background-color: #facc15;
-    color: #1e3a8a;
+    color: #facc15;
+    text-decoration: underline;
+    text-decoration-color: #facc15;
+    text-decoration-thickness: 2px;
+}
+
+.nav-links a.active {
+    color: #facc15;
+    text-decoration: underline;
+    text-decoration-color: #facc15;
+    text-decoration-thickness: 2px;
 }
 
 .hamburger {
@@ -232,7 +240,8 @@ footer {
         position: absolute;
         top: 90px;
         right: 0;
-        background-color: #1e3a8a;
+        background-color: blue;
+        
         width: 100%;
         text-align: center;
         padding: 10px 0;
