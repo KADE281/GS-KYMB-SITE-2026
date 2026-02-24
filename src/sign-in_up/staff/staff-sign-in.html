@@ -3,22 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff In</title>
+    <title>Staff Sign In</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="staff-sign-in.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <div class="logo-name">
+            <img src="../../media/school1.jpeg" alt="School Logo" class="logo">
+        </div>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../../homepage/index.html">Home</a></li>
+            <li><a href="../../about/about.html">About</a></li>
+            <li><a href="../../academics/academics.html">Academics</a></li>
+            <li><a href="../../admissions/admissions.html">Admissions</a></li>
+            <li><a href="../../event/event.html">Events</a></li>
+            <li><a href="../../studentlife/life.html">Student Life</a></li>
+            <li><a href="../../studentportal/studentPortal.html">Student Portal</a></li>
+            <li><a href="../../staffPortal/LeaderHome.html" class="active">Staff Portal</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
     <div class="login-container">
         <div class="login-card">
-            <a href="../../homepage/index.html" class="back-home"><i class="fas fa-home"></i> Home</a>
-            
-            <div class="logo">
-                <img src="school1.jpeg" alt="School Logo">
+            <div class="logo-circle">
+                <img src="../../media/school1.jpeg" alt="School Logo">
             </div>
             
-            <h1>Staff Portal</h1>
-            <p>Welcome! Sign in to access your dashboard</p>
+            <h1>Staff Sign In</h1>
+            <p>Welcome! Enter your credentials to access your dashboard</p>
 
             <form action="../../LoginServlet" method="POST">
                 <div class="input-group">
@@ -26,7 +47,7 @@
                     <select name="role" required>
                         <option value="">Select Your Role</option>
                         <option value="headmaster">Headmaster</option>
-                        <option value="dos">Director of Studies (DOS)</option>
+                        <option value="dos">Director of Studies</option>
                         <option value="accountant">Accountant</option>
                         <option value="teacher">Teacher</option>
                     </select>
@@ -34,18 +55,18 @@
 
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
                 </div>
 
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" id="password" placeholder="Password" required>
-                    <i class="fas fa-eye toggle-icon" id="eye" onclick="togglePassword()"></i>
+                    <i class="fas fa-eye toggle-icon" id="eye" onclick="togglePassword('password', 'eye')"></i>
                 </div>
 
                 <a href="#" class="forgot-link">Forgot Password?</a>
 
-                <button type="submit" class="btn-login">Login</button>
+                <button type="submit" class="btn-login">Sign In</button>
 
                 <div class="divider">Or</div>
 
@@ -62,49 +83,86 @@
                 </div>
             </form>
 
-            <p class="signup-link">Don't have an account? <a href="staff-sign-up.html">Sign Up</a></p>
-            
-            <div class="help-footer">
-                Need help? <a href="mailto:support@school.com">Contact Support</a> | <a href="#">FAQ</a>
-            </div>
+            <p class="signup-link">Don't have an account? <a href="staff-sign-up.html">Create Account</a></p>
         </div>
     </div>
+</main>
 
-    <script>
-        function togglePassword() {
-            const input = document.getElementById('password');
-            const icon = document.getElementById('eye');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.replace('fa-eye', 'fa-eye-slash');
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:admissions@gskayumbu.edu">admissions@gskayumbu.edu</a></p>
+            <p><i class="fas fa-phone"></i> <a href="tel:+250788000000">+250 788 000 000</a></p>
+            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/250788000000">+250 788 000 000</a></p>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+        <div class="footer-section">
+            <h3>Need Help?</h3>
+            <form action="mailto:support@gskayumbu.edu" method="POST">
+                <textarea name="message" placeholder="Describe your issue..." required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> GS KAYUMBU/TSS. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Hamburger menu
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+    });
+
+    // Toggle password visibility
+    function togglePassword(fieldId, iconId) {
+        const input = document.getElementById(fieldId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+
+    // Google Sign In
+    function handleCredentialResponse(response) {
+        const role = document.querySelector('select[name="role"]').value;
+        if (!role) {
+            alert('Please select your role first');
+            return;
+        }
+        
+        fetch('../../LoginServlet', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: 'google_token=' + response.credential + '&role=' + role
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '../../staffPortal/dashboard.html';
             } else {
-                input.type = 'password';
-                icon.classList.replace('fa-eye-slash', 'fa-eye');
+                alert('Login failed: ' + data.message);
             }
-        }
+        })
+        .catch(err => alert('Error: ' + err));
+    }
+</script>
 
-        function handleCredentialResponse(response) {
-            const role = document.querySelector('select[name="role"]').value;
-            if (!role) {
-                alert('Please select your role first');
-                return;
-            }
-            
-            fetch('../../LoginServlet', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                body: 'google_token=' + response.credential + '&role=' + role
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.href = '../../staffPortal/dashboard.html';
-                } else {
-                    alert('Login failed: ' + data.message);
-                }
-            })
-            .catch(err => alert('Error: ' + err));
-        }
-    </script>
 </body>
 </html>

@@ -153,7 +153,8 @@ main {
 .hero-content p {
     font-size: 1.2rem;
     max-width: 800px;
-    margin: 0 auto 30px;
+    margin-left: 3px;
+    
     line-height: 1.6;
 }
 
@@ -253,6 +254,8 @@ main {
 }
 
 .detail-box p {
+  margin-left: 3px;
+
   margin-bottom: 15px;
   font-weight: bold;
   color:black

@@ -147,6 +147,61 @@ main {
     color: white;
 }
 
+/* GUIDANCE SECTION */
+.guidance-section {
+    max-width: 1200px;
+    margin: 4rem auto 2rem;
+    padding: 0 2rem;
+}
+
+.guidance-section h2 {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.guidance-section h2 i {
+    color: #facc15;
+    margin-right: 0.5rem;
+}
+
+.guidance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.guidance-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid #facc15;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.guidance-card i {
+    font-size: 2.5rem;
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.guidance-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.guidance-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.guidance-card strong {
+    color: #1e3a8a;
+}
+
 footer {
     background-color: #222;
     color: white;
@@ -249,5 +304,9 @@ footer {
 
     .nav-links.active {
         display: flex;
+    }
+
+    .guidance-grid {
+        grid-template-columns: 1fr;
     }
 }

@@ -9,49 +9,75 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <div class="logo-name">
+            <img src="../../media/school1.jpeg" alt="School Logo" class="logo">
+        </div>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../../homepage/index.html">Home</a></li>
+            <li><a href="../../about/about.html">About</a></li>
+            <li><a href="../../academics/academics.html">Academics</a></li>
+            <li><a href="../../admissions/admissions.html">Admissions</a></li>
+            <li><a href="../../event/event.html">Events</a></li>
+            <li><a href="../../studentlife/life.html">Student Life</a></li>
+            <li><a href="../../studentportal/studentPortal.html">Student Portal</a></li>
+            <li><a href="../../staffPortal/LeaderHome.html" class="active">Staff Portal</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
     <div class="signup-container">
         <div class="signup-card">
-            <a href="../../homepage/index.html" class="back-home"><i class="fas fa-home"></i> Home</a>
-            
-            <div class="logo">
-                <img src="school1.jpeg" alt="School Logo">
+            <div class="logo-circle">
+                <img src="../../media/school1.jpeg" alt="School Logo">
             </div>
             
-            <h1>Staff Registration</h1>
-            <p>Create your account to join our team</p>
+            <h1>Create Staff Account</h1>
+            <p>Join our team and contribute to academic excellence</p>
 
-            <form action="../../RegisterServlet" method="POST">
+            <form action="../RegisterServlet" method="POST" onsubmit="return validateForm()">
                 <div class="input-group">
+                    <label>Select Your Role</label>
                     <i class="fas fa-user-tie"></i>
                     <select name="role" required>
-                        <option value="">Select Your Role</option>
+                        <option value="">Choose your position</option>
                         <option value="headmaster">Headmaster</option>
-                        <option value="dos">Director of Studies (DOS)</option>
+                        <option value="dos">Director of Studies</option>
                         <option value="accountant">Accountant</option>
                         <option value="teacher">Teacher</option>
                     </select>
                 </div>
 
                 <div class="input-group">
+                    <label>Full Name</label>
                     <i class="fas fa-user"></i>
-                    <input type="text" name="full_name" placeholder="Full Name" required>
+                    <input type="text" name="full_name" placeholder="Enter your full name" required>
                 </div>
 
                 <div class="input-group">
+                    <label>Email Address</label>
                     <i class="fas fa-envelope"></i>
-                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="your.email@example.com" required>
                 </div>
 
                 <div class="input-group">
+                    <label>Password</label>
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <i class="fas fa-eye toggle-icon" id="eye1" onclick="togglePassword('password', 'eye1')"></i>
+                    <input type="password" name="password" id="password" placeholder="Create a strong password" required>
+                    <i class="fas fa-eye toggle-icon" id="eye-1" onclick="togglePassword('password', 'eye-1')"></i>
                 </div>
 
                 <div class="input-group">
+                    <label>Confirm Password</label>
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
-                    <i class="fas fa-eye toggle-icon" id="eye2" onclick="togglePassword('confirm_password', 'eye2')"></i>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Re-enter your password" required>
+                    <i class="fas fa-eye toggle-icon" id="eye-2" onclick="togglePassword('confirm_password', 'eye-2')"></i>
                 </div>
 
                 <button type="submit" class="btn-signup">Create Account</button>
@@ -71,58 +97,99 @@
                 </div>
             </form>
 
-            <p class="login-link">Already have an account? <a href="staff-sign-in.html">Login</a></p>
-            
-            <div class="help-footer">
-                Need help? <a href="mailto:support@school.com">Contact Support</a> | <a href="#">FAQ</a>
-            </div>
+            <p class="signin-link">Already have an account? <a href="staff-sign-in.html">Sign In</a></p>
         </div>
     </div>
+</main>
 
-    <script>
-        function togglePassword(fieldId, iconId) {
-            const input = document.getElementById(fieldId);
-            const icon = document.getElementById(iconId);
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.replace('fa-eye', 'fa-eye-slash');
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:admissions@gskayumbu.edu">admissions@gskayumbu.edu</a></p>
+            <p><i class="fas fa-phone"></i> <a href="tel:+250788000000">+250 788 000 000</a></p>
+            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/250788000000">+250 788 000 000</a></p>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+        <div class="footer-section">
+            <h3>Need Help?</h3>
+            <form action="mailto:support@gskayumbu.edu" method="POST">
+                <textarea name="message" placeholder="Describe your issue..." required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> GS KAYUMBU/TSS. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Hamburger menu
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+    });
+
+    // Toggle password visibility
+    function togglePassword(fieldId, iconId) {
+        const input = document.getElementById(fieldId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+
+    // Validate password match
+    function validateForm() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+        
+        if (password !== confirmPassword) {
+            alert('Passwords do not match! Please try again.');
+            document.getElementById('confirm_password').focus();
+            return false;
+        }
+        return true;
+    }
+
+    // Google Sign In
+    function handleCredentialResponse(response) {
+        const role = document.querySelector('select[name="role"]').value;
+        if (!role) {
+            alert('Please select your role first');
+            return;
+        }
+        
+        fetch('../RegisterServlet', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: 'google_token=' + response.credential + '&role=' + role
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '../../staffPortal/dashboard.html';
             } else {
-                input.type = 'password';
-                icon.classList.replace('fa-eye-slash', 'fa-eye');
+                alert('Registration failed: ' + data.message);
             }
-        }
+        })
+        .catch(err => alert('Error: ' + err));
+    }
+</script>
 
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-            if (password !== confirmPassword) {
-                e.preventDefault();
-                alert('Passwords do not match!');
-            }
-        });
-
-        function handleCredentialResponse(response) {
-            const role = document.querySelector('select[name="role"]').value;
-            if (!role) {
-                alert('Please select your role first');
-                return;
-            }
-            
-            fetch('../../RegisterServlet', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                body: 'google_token=' + response.credential + '&role=' + role
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.href = '../../staffPortal/dashboard.html';
-                } else {
-                    alert('Registration failed: ' + data.message);
-                }
-            })
-            .catch(err => alert('Error: ' + err));
-        }
-    </script>
 </body>
 </html>
