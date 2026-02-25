@@ -71,7 +71,7 @@ body {
 /* HERO SECTION */
 .hero {
     background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.85)), 
-                url('../homepage/school1.jpeg') center/cover;
+                url('../media/school1.jpeg') center/cover;
     height: 500px;
     display: flex;
     align-items: center;
