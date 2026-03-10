@@ -497,33 +497,47 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        height: 40vh;
+        margin-top: 70px;
+        padding: 5px 5px;
+    }
+    
     .hero h1 {
-        font-size: 1.5rem;
-    }
-    
-    .hero p {
-        font-size: 0.9rem;
-    }
-    
-    section h2 {
-        font-size: 1.5rem;
-    }
-    
-    .program-card i,
-    .resource-card i,
-    .facility-card i {
-        font-size: 2.5rem;
-    }
-    
-    .combo-icon {
-        width: 60px;
-        height: 60px;
         font-size: 1.2rem;
     }
     
-    .curriculum-item i {
+    .hero-overlay {
+        margin-top: 0;
+        padding: 5px 5px;
+    }
+    
+    .hero-overlay p {
+        font-size: 0.7rem;
+        line-height: 1.2;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .program-card i,
+    .resource-card i {
         font-size: 2rem;
     }
+    
+    .combo-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .curriculum-item i {
+        font-size: 1.8rem;
+    }
+    
     .nav-links {
         display: none;
         flex-direction: column;
@@ -535,5 +549,4 @@ footer {
         text-align: center;
         padding: 0;
     }
-    
 }
