@@ -67,9 +67,7 @@ body {
 
 /* HERO */
 .hero {
-    background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('../media/school1.jpeg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('../media/school1.jpeg') center/cover no-repeat;
     height: 400px;
     display: flex;
     align-items: center;
@@ -81,16 +79,21 @@ body {
     margin-top: -120px;
     text-align: center;
     color: white;
+    width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
 }
 
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 15px;
+    margin-left: 0;
 }
 
-.hero-overlay .hero p {
+.hero-overlay p {
     font-size: 1.3rem;
-    margin-left: 2px;
+    margin-left: 0;
+    text-align: center;
 }
 
 /* SECTIONS */
