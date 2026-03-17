@@ -379,7 +379,7 @@ main {
     position: relative;
     height: 60vh; /* Takes up 60% of the screen height */
     min-height: 400px;
-    background-image: url('school1.jpeg'); /* Use your campus image here */
+    background-image: url('media/school1.jpeg'); /* Use your campus image here */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
